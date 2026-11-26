@@ -1436,8 +1436,20 @@
     function setAttDirty(v) {
       isAttendanceDirty = !!v;
       const bar = document.getElementById('floatingSaveBar');
-      if (bar) bar.classList.toggle('hidden', !(isAttendanceDirty && AppState.selectedCourseForAtt && currentActiveView === 'viewMyCourses' && AppState.mc.code && AppState.mc.tab === 'att' && !(document.getElementById('noSessionToggle') || {}).checked));
+      if (bar) bar.classList.toggle('hidden', !(isAttendanceDirty && AppState.selectedCourseForAtt && currentActiveView === 'viewMyCourses' && AppState.mc.code && AppState.mc.tab === 'att' && !(document.getElementById('noSessionToggle') || {}).checked && !attInlineVisible()));
     }
+    // the floating button is only for when the normal save button is out of sight: never both at once
+    function attInlineVisible() {
+      const b = document.getElementById('saveAttendanceBtn');
+      if (!b || !b.offsetParent) return false;
+      const r = b.getBoundingClientRect();
+      return r.bottom > 0 && r.top < (window.innerHeight || document.documentElement.clientHeight) - 8;
+    }
+    let attScrollT = 0;
+    document.addEventListener('scroll', function () {
+      if (attScrollT) return;
+      attScrollT = setTimeout(function () { attScrollT = 0; if (isAttendanceDirty) setAttDirty(true); }, 80);
+    }, true);
     let isCreatingCourse = false;
     let deferredInstallPrompt = null;
 

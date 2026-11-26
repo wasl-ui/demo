@@ -7,7 +7,7 @@
 'use strict';
 importScripts('./js/crypto.js', './js/release.js');
 const RELEASE_PUB = 'BHaW4pH2dClhn1JNRxVunxc7x5ygESIqFswYX0XBJn25SMUTx05ahmO2pxSmYL2DAwYhQ0PaK9oJCQ0b-vh3OXE';
-const VERSION = '1.28.1-202611262048';
+const VERSION = '1.28.1-202611262108';
 const CACHE = 'alasala-app-' + VERSION;
 // v1.28.0: a version can also arrive inside a reply (not from the site). The newest installed version is the «active» one,
 // written in a small cache of its own; a version that never starts is dropped by itself after three tries.

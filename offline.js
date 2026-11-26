@@ -1011,7 +1011,7 @@
   window.WaslFreshBanner = freshBanner;
 
   // ---------------------------------------------------------------- v1.18.3: the account sheet (tap the icon next to the name)
-  const APP_VERSION = '1.28.1-202611262048';
+  const APP_VERSION = '1.28.1-202611262108';
   const FB_EVERY = 14 * 86400e3;   // the question comes back every 2 weeks
   const fbKey = () => 'fbLast:' + String((typeof AppState !== 'undefined' && AppState.currentUser && AppState.currentUser.email) || '').toLowerCase();
   const fbDue = () => { const t = Number(localStorage.getItem(fbKey()) || 0); return Date.now() - t >= FB_EVERY; };
